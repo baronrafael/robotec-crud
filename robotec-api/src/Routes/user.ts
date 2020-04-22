@@ -14,9 +14,9 @@ import { checkJwt } from "../middlewares/checkJwt";
   router.post("/", [], UserController.store);
 
   //Edit one user
-  router.patch("/:id([0-9]+)", [checkJwt], UserController.update);
+  router.patch("/:id([0-9]+)", [], UserController.update);
 
   //Delete one user
-  router.delete("/:id([0-9]+)", [checkJwt], UserController.destroy);
+  router.delete("/:id([0-9]+)", [], UserController.destroy);
 
 export default router;

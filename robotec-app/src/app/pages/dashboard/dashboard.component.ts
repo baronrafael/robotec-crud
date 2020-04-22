@@ -34,4 +34,17 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  deleteUser(id){
+    this.usersService.deleteUser(id)
+    .subscribe(
+      res => {
+        //console.log(res);
+        this.getUsersList();
+      },
+      err => {
+        console.log(err.error);
+      }
+    );
+  }
+
 }

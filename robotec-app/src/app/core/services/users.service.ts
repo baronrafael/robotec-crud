@@ -29,5 +29,9 @@ export class UsersService {
   registerUser(user){
     return this.http.post(this.usersUrl, user, this.httpOptions);
   }
+
+  deleteUser(id){
+    return this.http.delete(this.usersUrl+'/'+id, this.httpOptions)
+  }
   
 }
