@@ -1,0 +1,28 @@
+<mat-drawer-container fxFill autosize>
+    <mat-drawer fxLayout="column" #drawer class="sidenav text-center" mode="over">
+        <div class="header">
+            <div class="mt-20 mb-20" fxLayout="column" fxLayoutAlign="start center"> 
+                <h2 class="m-0">Nombre Apellido</h2>
+                <h4 class="m-0">correo@correo.com</h4>
+            </div>
+        </div>
+        <div class="content mt-10">
+            <div class="border-bottom" fxLayout="column">
+                <button class="sidenav-btn" mat-button><mat-icon class="icon-30">event</mat-icon> Eventos</button>
+            </div>
+        </div>
+        <div fxLayout="column" class="footer border-top mb-10">
+            <button class="sidenav-btn" mat-button><mat-icon class="icon-30">subdirectory_arrow_left</mat-icon> Cerrar Sesión</button>
+        </div>
+    </mat-drawer>
+    <div fxFill fxLayout="column" fxLayoutAlign="space-between center">
+        <div class="width-100 header">
+            <mat-toolbar>
+                <button class="ml--15" mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+            </mat-toolbar>
+        </div>
+        <div class="content main-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</mat-drawer-container>

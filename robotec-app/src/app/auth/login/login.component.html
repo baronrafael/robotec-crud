@@ -1,0 +1,19 @@
+<div fxFill fxLayout="column" fxLayoutAlign="center center">
+    <h1>Inicia sesión</h1>
+    <mat-form-field appearance="outline">
+        <mat-label>Correo</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Contraseña</mat-label>
+        <input [type]="hidePassword ? 'password' : 'text'" matInput>
+        <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <button (click)="handleLogin()" color="primary" class="login-btn" mat-raised-button>
+        <span>Iniciar Sesión</span>
+    </button>
+    <a class="mt-20 second-btn" routerLink="/auth/forgot-password">¿Olvidaste tu contraseña?</a>
+    <span class="mt-20">¿No tienes una cuenta? <a class="second-btn" routerLink="/auth/signup">Registrate</a></span>
+</div>
