@@ -53,12 +53,12 @@ class UserController {
         //Hash the password, to securely store on DB
         user.hashPassword();
 
-        //Try to save. If fails, the username is already in use
+        //Try to save. If fails, the email is already in use
         const userRepository = getRepository(User);
         try {
             await userRepository.save(user);
         } catch (e) {
-            res.status(409).send("Este email ya esta en uso");
+            res.status(400).send("Este email ya esta en uso");
             return;
         }
 
@@ -71,7 +71,7 @@ class UserController {
         const id = req.params.id;
 
         //Get values from the body
-        const { firstName, lastName, email } = req.body;
+        const { firstName, lastName } = req.body;
 
         //Try to find user on database
         const userRepository = getRepository(User);
@@ -80,14 +80,13 @@ class UserController {
             user = await userRepository.findOneOrFail(id);
         } catch (error) {
             //If not found, send a 404 response
-            res.status(404).send("Usuario no encontrado");
+            res.status(404).send("El recurso solicitado no existe");
             return;
         }
 
         //Validate the new values on model
         user.firstName = firstName;
         user.lastName = lastName;
-        user.email = email;
         const errors = await validate(user);
         if (errors.length > 0) {
             res.status(400).send(errors);
