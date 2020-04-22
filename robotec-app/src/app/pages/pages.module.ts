@@ -4,10 +4,11 @@ import { SharedModule } from '../shared/shared.module';
 import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
-  declarations: [PagesComponent, DashboardComponent],
+  declarations: [PagesComponent, DashboardComponent, RegisterComponent],
   imports: [
     CommonModule,
     SharedModule,

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signInForm = this.formBuilder.group({
-      email: ['rafael@hotmail.com', Validators.required],
+      email: ['baronrafael@hotmail.com', Validators.required],
       password: ['12345', Validators.required],
     });
   }
@@ -70,7 +70,6 @@ export class LoginComponent implements OnInit {
 
       }
     );
-    //this.router.navigate(['pages'], { replaceUrl: true });
   }
 
 }
