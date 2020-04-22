@@ -1,0 +1,33 @@
+.main-content{
+    background-color: #DFE3EE;
+    width: 100%;
+}
+
+.sidenav {
+    //padding: 20px;
+    height: 100%;
+    width: 16rem;
+}
+
+.header{
+    background-color: rgb(235, 235, 235);
+}
+
+.sidenav-btn{
+    text-align: left;
+    font-size: 16px;
+}
+
+.icon-30{
+    width: 30px;
+    height: 30px;
+}
+
+:host ::ng-deep.mat-drawer-inner-container{
+    display: contents;
+}
+
+.m-0 { margin: 0; }
+
+.border-top { border-top: 1px solid gray; padding-top: 10px; }
+.border-bottom { border-bottom: 1px solid gray; padding-bottom: 10px; }
