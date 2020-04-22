@@ -58,12 +58,12 @@ class UserController {
         try {
             await userRepository.save(user);
         } catch (e) {
-            res.status(400).send("Este email ya esta en uso");
+            res.status(401).send("Este email ya esta en uso");
             return;
         }
 
         //If all ok, send 201 response
-        res.status(201).send("Usuario creado");
+        res.status(201).send();
     };
 
     static update = async (req: Request, res: Response) => {

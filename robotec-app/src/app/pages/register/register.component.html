@@ -1,0 +1,28 @@
+<div fxFill fxLayout="column" fxLayoutAlign="center center">
+    <h1>Registo de Usuarios</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="handleRegister()" class="width-100" fxLayout="column" fxLayoutAlign="center center">
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="lastName">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Correo</mat-label>
+            <input matInput formControlName="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input [type]="hidePassword ? 'password' : 'text'" matInput formControlName="password">
+            <button type="button" mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <button type="submit" color="primary" class="login-btn" mat-raised-button [disabled]="!registerForm.valid || bRegister ||  !checkingInputEmail()">
+            <span *ngIf="!bRegister">Registrar Usuario</span>
+            <mat-spinner *ngIf="bRegister" mode="indeterminate" [diameter]="30"></mat-spinner>
+        </button>
+    </form>
+</div>

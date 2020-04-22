@@ -1,18 +1,19 @@
 <mat-drawer-container fxFill autosize>
     <mat-drawer fxLayout="column" #drawer class="sidenav text-center" mode="over">
         <div class="header">
-            <div class="mt-20 mb-20" fxLayout="column" fxLayoutAlign="start center"> 
-                <h2 class="m-0">Nombre Apellido</h2>
-                <h4 class="m-0">correo@correo.com</h4>
+            <div *ngIf="userInfo" class="mt-20 mb-20" fxLayout="column" fxLayoutAlign="start center"> 
+                <h2 class="m-0">{{userInfo.firstName}} {{userInfo.lastName}}</h2>
+                <h4 class="m-0">{{userInfo.email}}</h4>
             </div>
         </div>
         <div class="content mt-10">
             <div class="border-bottom" fxLayout="column">
-                <button class="sidenav-btn" mat-button><mat-icon class="icon-30">event</mat-icon> Eventos</button>
+                <button (click)="goToDashboard()" class="sidenav-btn" mat-button><mat-icon class="icon-30">event</mat-icon> Lista de Usuarios</button>
+                <button (click)="goToRegister()" class="sidenav-btn" mat-button><mat-icon class="icon-30">event</mat-icon> Registrar Usuario</button>
             </div>
         </div>
         <div fxLayout="column" class="footer border-top mb-10">
-            <button class="sidenav-btn" mat-button><mat-icon class="icon-30">subdirectory_arrow_left</mat-icon> Cerrar Sesión</button>
+            <button (click)="logout()" class="sidenav-btn" mat-button><mat-icon class="icon-30">subdirectory_arrow_left</mat-icon> Cerrar Sesión</button>
         </div>
     </mat-drawer>
     <div fxFill fxLayout="column" fxLayoutAlign="space-between center">

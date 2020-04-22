@@ -1,0 +1,23 @@
+<div class="heartbeat" *ngIf="!usersList" fxFill fxLayout="column" fxLayoutAlign="center center">
+    <h2 class="text-center">Loading</h2>
+</div>
+<div class="slide-in-fwd-center" *ngIf="usersList" fxFill fxLayout="column" fxLayoutAlign="none center">
+    <div class="mt-20" style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th class="text-center">Editar</th>
+                <th class="text-center">Eliminar</th>
+            </tr>
+            <tr *ngFor="let user of usersList">
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td class="text-center"><button (click)="goToEditUser(user.id)" mat-icon-button><mat-icon>edit</mat-icon></button></td>
+                <td class="text-center"><button (click)="deleteUser(user.id)" mat-icon-button [disabled]="user.id == this.userLogged.user_id"><mat-icon>delete</mat-icon></button></td>
+            </tr>
+        </table>
+    </div>
+</div>
