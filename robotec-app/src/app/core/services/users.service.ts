@@ -7,15 +7,17 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class UsersService {
   private readonly usersUrl;
-
-  httpOptions = {
-    headers: new HttpHeaders({
-    'Conten-Type': 'application/json'
-    })
-  }
+  token: string;
 
   constructor(private http: ApiService) {
     this.usersUrl = 'users'
+  }
+
+  httpOptions = {
+    headers: new HttpHeaders({
+    'Conten-Type': 'application/json',
+    'auth': JSON.parse(localStorage.getItem('userLogged')).token
+    })
   }
 
   getAllUsers(){
