@@ -69,8 +69,12 @@ export class RegisterComponent implements OnInit {
       err => {
         this.bRegister = false;
         console.log(err);
-        this.openSnackBar(err.error);
-
+        if(err.status == 400){
+          this.openSnackBar('Algo salio mal...');
+        }
+        else if(err.status == 401){
+          this.openSnackBar(err.error);
+        }
       }
     );
   }

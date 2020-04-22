@@ -15,8 +15,8 @@
                 <td>{{user.firstName}}</td>
                 <td>{{user.lastName}}</td>
                 <td>{{user.email}}</td>
-                <td class="text-center"><mat-icon>edit</mat-icon></td>
-                <td class="text-center"><button (click)="deleteUser(user.id)" mat-icon-button><mat-icon>delete</mat-icon></button></td>
+                <td class="text-center"><button (click)="goToEditUser(user.id)" mat-icon-button><mat-icon>edit</mat-icon></button></td>
+                <td class="text-center"><button (click)="deleteUser(user.id)" mat-icon-button [disabled]="user.id == this.userLogged.user_id"><mat-icon>delete</mat-icon></button></td>
             </tr>
         </table>
     </div>

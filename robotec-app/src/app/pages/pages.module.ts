@@ -5,10 +5,11 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
+import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
-  declarations: [PagesComponent, DashboardComponent, RegisterComponent],
+  declarations: [PagesComponent, DashboardComponent, RegisterComponent, EditComponent],
   imports: [
     CommonModule,
     SharedModule,

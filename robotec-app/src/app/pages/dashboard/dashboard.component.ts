@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/core/services/users.service';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +14,8 @@ export class DashboardComponent implements OnInit {
   usersList: any;
 
   constructor(
+    private router: Router,
+    public snackBar: MatSnackBar,
     private usersService: UsersService
   ) { }
 
@@ -19,6 +23,12 @@ export class DashboardComponent implements OnInit {
     this.userLogged = JSON.parse(localStorage.getItem('userLogged'));
     //console.log(this.userLogged);
     this.getUsersList();
+  }
+
+  openSnackBar(message: string){
+    this.snackBar.open(message, 'Close', {
+      duration: 3000,
+    });
   }
 
   getUsersList(){
@@ -34,17 +44,27 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  goToEditUser(id){
+    this.router.navigate(['pages/edit', id]);
+  }
+
   deleteUser(id){
-    this.usersService.deleteUser(id)
-    .subscribe(
-      res => {
-        //console.log(res);
-        this.getUsersList();
-      },
-      err => {
-        console.log(err.error);
-      }
-    );
+    if(id == this.userLogged.user_id){
+      this.openSnackBar('No puedes eliminarte a ti mismo!!');
+      return;
+    }
+    else{
+      this.usersService.deleteUser(id)
+      .subscribe(
+        res => {
+          //console.log(res);
+          this.getUsersList();
+        },
+        err => {
+          console.log(err.error);
+        }
+      );
+    }
   }
 
 }

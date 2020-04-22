@@ -1,0 +1,17 @@
+<div *ngIf="userInfo" fxFill fxLayout="column" fxLayoutAlign="center center">
+    <h1>Editar Usuario</h1>
+    <form [formGroup]="editForm" (ngSubmit)="handleEdit()" class="width-100" fxLayout="column" fxLayoutAlign="center center">
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="lastName">
+        </mat-form-field>
+        <button type="submit" color="primary" class="login-btn" mat-raised-button [disabled]="!editForm.valid || bEdit">
+            <span *ngIf="!bEdit">Editar Usuario</span>
+            <mat-spinner *ngIf="bEdit" mode="indeterminate" [diameter]="30"></mat-spinner>
+        </button>
+    </form>
+</div>

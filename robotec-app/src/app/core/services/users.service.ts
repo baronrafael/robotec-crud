@@ -33,5 +33,9 @@ export class UsersService {
   deleteUser(id){
     return this.http.delete(this.usersUrl+'/'+id, this.httpOptions)
   }
+
+  editUser(id, user){
+    return this.http.patch(this.usersUrl+'/'+id, user, this.httpOptions);
+  }
   
 }
