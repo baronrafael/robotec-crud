@@ -36,7 +36,7 @@ class UserController {
     static store = async (req: Request, res: Response) => {
         
         //Get parameters from the body
-        let { firstName, lastName, email, password } = req.body.state;
+        let { firstName, lastName, email, password } = req.body;
         let user = new User();
         user.firstName = firstName;
         user.lastName = lastName;
