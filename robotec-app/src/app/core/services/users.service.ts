@@ -25,5 +25,9 @@ export class UsersService {
   getUserById(id){
     return this.http.get(this.usersUrl+'/'+id, this.httpOptions)
   }
+
+  registerUser(user){
+    return this.http.post(this.usersUrl, user, this.httpOptions);
+  }
   
 }
